@@ -1,13 +1,494 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;700&display=swap');
+
+html{
+  box-sizing: border-box;
+  font-size: 18px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root{
+  --Dark-Blue: hsl(233, 26%, 24%);
+  --Lime-Green: hsl(136, 65%, 51%);
+  --Bright-Cyan: hsl(192, 70%, 51%);
+  --Grayish-Blue: hsl(233, 8%, 62%);
+  --Light-Grayish-Blue: hsl(220, 16%, 96%);
+  --Very-Light-Gray: hsl(0, 0%, 98%);
+  --White: hsl(0, 0%, 100%);
+}
+
+body,h1,h2,h3,h4,h5,h6,p,ul,ol{
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-family: 'Public Sans', sans-serif;
+  
+  -webkit-font-smoothing: antialiased;
+}
+
+/* if in mobile the is overflow from x axis is showing the use below code. ----
+      
+    #root{
+      overflow-x: hidden;
+    }
+
+    as in mobile css on body does not work.
+*/
+
+body{
+  overflow-x: hidden;
+}
+
+img{
+  max-width: 100%;
+  height: auto;
+}
+
+p{
+  line-height: 1.4;
+}
+
+/* ......... Navigation Bar..........*/
+
+.nav-section{
+  position: relative;
+  z-index: 1;
+  background-color: var(--White);
+}
+
+nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 20px 0; */
+  height: 60px;
+}
+
+nav ul{
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+}
+
+nav ul li{
+  margin-left: 20px;
+}
+
+nav ul li a{
+  text-decoration: none;
+  color: var(--Grayish-Blue);
+  transition: all .3s ease-in-out;
+}
+
+nav ul li a:hover{
+  color: var(--Dark-Blue);
+}
+
+.container{
+  /* width: 1120px; */
+  margin: 0 auto;
+  max-width: 90%;
+  /* background: chocolate; */
+}
+
+.btn{
+  border: none;
+  background:linear-gradient(to right, var(--Lime-Green), var(--Bright-Cyan));
+  padding: 10px 20px;
+  border-radius: 50px;
+  color: var(--White);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:hover{
+  background:linear-gradient(to left, var(--Lime-Green), var(--Bright-Cyan));
+}
+
+.hamburger-btn{
+  display: none;
+}
+
+/* ......... Introduction .........*/
+
+.header-section{
+  background-color: var(--Very-Light-Gray);
+}
+
+.header-wrap{
+  display: flex;
+  align-items: center;
+  padding-bottom: 40px;
+}
+
+.header-text{
+  flex: 1 0 40%;
+}
+
+.header-image{
+  flex: 1 0 60%;
+  position: relative;
+}
+
+.header-image img:first-child{
+  transform: scale(1.6);
+  position: relative;
+  right: -200px;
+  top: -50px;
+}
+
+.header-image img:last-child{
+  transform: scale(1.1);
+  position: absolute;
+  right: -190px;
+  top: -160px;
+}
+
+.header-text h1{
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 30px;
+}
+
+.header-text p{
+  margin-bottom: 30px;
+  color: var(--Grayish-Blue);
+}
+
+/* ............. Features Section .............*/
+
+.feature-section{
+  background-color: var(--Light-Grayish-Blue);
+  padding: 100px 0;
+}
+
+.feature-section .container h1{
+  margin-bottom: 20px;
+}
+
+.feature-section .container p{
+  margin-bottom: 60px;
+  color: var(--Grayish-Blue);
+}
+
+.card-wrapper{
+  display: flex;
+  /* gap: 100px;          ---- can be use in modern browser to give gaps */
+}
+
+.card-wrapper >* + *{       /* (>*) means to select all direct elements and (>* + *) means select all excluding first element */
+  margin-left: 30px;
+}
+
+.card img{
+  margin-bottom: 30px;
+}
+
+.card h2{
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.feature-section .card p{
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ............. Articles Section ...........*/
+
+.articles-section{
+  padding: 100px 0;
+  background-color: var(--Very-Light-Gray);
+}
+
+.articles-section h1{
+  margin-bottom: 30px;
+}
+
+.article-wrapper{
+  display: flex;
+}
+
+.article-card{
+  background: var(--White);
+}
+
+.article-wrapper>* + *{
+  margin-left: 30px;
+}
+
+.article-card img{
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.article-card .content{
+  padding: 20px;
+  background-color: var(--White);
+}
+
+.article-card .content a{
+  display: inline-block;
+  padding: 10px 0;
+  color: var(--Dark-Blue);
+  text-decoration: none;
+  transition: all .3s ease-in-out;
+}
+
+.article-card .content a:hover{
+  color: var(--Lime-Green);
+}
+
+.article-card .content p{
+  font-size: 16px;
+  color: var(--Grayish-Blue);
+}
+
+/* ........... Footer ...........*/
+
+footer{
+  background-color: var(--Dark-Blue);
+  padding: 30px;
+}
+
+footer .container .content{
+  display: flex;
+  justify-content: space-between;
+}
+
+.container .content ul{
+  list-style-type: none;
+}
+
+.container .content .socials{
+  display: flex;
+  margin-top: 60px;
+}
+
+.container .content .socials>* + *{
+  margin-left: 15px;
+}
+
+.container .content ul li a{
+  color: var(--Light-Grayish-Blue);
+  text-decoration: none;
+  transition: all .3s ease-in-out;
+}
+
+.container .content ul li a:hover{
+  color: var(--Grayish-Blue);
+}
+
+.container .content ul li{
+  margin-bottom: 10px;
+}
+
+.footer-cta{
+  text-align: right;
+}
+
+.copyright{
+  color: var(--Grayish-Blue);
+  font-size: 16px;
+  margin-top: 30px;
+}
+
+/* .............. Responsibe Media Queary ................. */
+
+@media(max-width: 1200px){
+
+  /* ............... Features Section .............*/
+
+  .card-wrapper{
+    flex-wrap: wrap;
+  }
+
+  .card-wrapper .card{
+    flex: 1 0 40%;
+    margin-bottom: 30px;
+  }
+
+  .card-wrapper .card:nth-child(odd){
+    margin-left: 0;
+  }
+
+  /* ............... Article Section ..............*/
+
+  .article-wrapper{
+    flex-wrap: wrap;
+  }
+
+  .article-wrapper .article-card{
+    flex: 1 0 40%;
+    margin-bottom: 30px;
+  }
+
+  .article-wrapper .article-card:nth-child(odd){
+    margin-left: 0;
+  }
+}
+
+@media(max-width: 1000px){
+
+  /* ................. Footer .................*/
+
+  footer .container .content{
+    flex-wrap: wrap;
+  }
+
+  footer .container .content> *{
+    flex: 1 0 30%;
+    margin-bottom: 30px;
+    text-align: left;
+  }
+
+  .container .content .socials{
+    margin-top: 30px;
+  }
+
+  footer .container .content .footer-cta{
+    margin-bottom: 0;
+  }
+}
+
+@media(max-width: 870px){
+
+  /* ......... Navigation Bar ...........*/
+
+  nav ul{
+    position: fixed;
+    flex-direction: column;
+    top: 80px;
+    left:-500px;
+    transform: translateX(-50%);
+    background: var(--White);
+    padding: 20px 0;
+    width: 90%;
+    border-radius: 20px;
+    box-shadow: 0 30px 50px 5px #A0A0A0;
+    transition: all .3s ease-in-out;
+  }
+
+  .open{
+    left:50%
+  }
+
+  nav ul li a:hover{
+    color: var(--Lime-Green);
+  }
+
+  .navbar-cta{
+    display: none;
+  }
+
+  .hamburger-btn{
+    border: none;
+    outline: none;
+    background: none;
+    display: block;
+  }
+
+  nav ul li a{
+    color: var(--Dark-Blue);
+  }
+
+  nav ul li{
+    padding-bottom: 10px;
+  }
+
+  nav ul li:last-child{
+    padding-bottom: 0;
+  }
+
+  /* ............ Introduction .............*/
+
+  .header-text{
+    flex: 1 0 70%;
+  }
+
+  .header-image{
+    flex: 1 0 30%;
+  }
+
+  .header-wrap{
+    padding-top: 30px;
+  }
+
+  .header-image img:first-child{
+    right: -50px;
+  }
+
+  .header-image img:last-child{
+    right: -75px;
+    top: -125px;
+  }
+
+  .header-text h1{
+    font-size: 33px;
+  }
+
+  .header-text p{
+    font-size: 16px;
+  }
+
+  /* ............. Feature Section ............*/
+
+  .feature-section .container h1{
+    font-size: 24px;
+  }
+
+  .feature-section .container p{
+    font-size: 16px;
+  }
+
+  .feature-section{
+    padding: 30px 0;
+  }
+
+  /* ............... Article Section ...............*/
+
+  .articles-section{
+    padding: 30px 0;
+  }
+
+}
+
+@media(max-width: 770px){
+
+  /* ................. Footer ..................*/
+
+  footer .container .content> *{
+    flex: 1 0 100%;
+    text-align: center;
+  }
+
+  footer .container .content .socials{
+    justify-content: center;
+  }
+}
+
+@media(max-width: 580px){
+
+  /* .............. Feature Section .............*/
+
+  .card-wrapper .card{
+    flex: 1 0 100%;
+    margin-left: 0;
+  }
+
+  .card-wrapper .card:last-child{
+    margin-bottom: 0;
+  }
+
+  /* ................ Article Section ...............*/
+
+  .article-wrapper .article-card{
+    flex: 1 0 100%;
+    margin-left: 0;
+  }
+
+  .article-wrapper .article-card:last-child{
+    margin-bottom: 0;
+  }
+
 }
